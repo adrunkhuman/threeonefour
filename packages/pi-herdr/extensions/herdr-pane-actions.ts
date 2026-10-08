@@ -153,11 +153,10 @@ export async function handlePaneAction(
 			const updateTimer = runtime.onUpdate ? setInterval(publishWatchUpdate, 1000) : null;
 
 			try {
-				const args = ["wait", "output", resolved.pane.pane_id, "--match", match];
+				const args = ["pane", "wait-output", resolved.pane.pane_id, params.regex ? "--regex" : "--match", match];
 				if (params.source) args.push("--source", params.source);
 				if (params.lines != null) args.push("--lines", String(params.lines));
 				if (params.timeout != null) args.push("--timeout", String(params.timeout));
-				if (params.regex) args.push("--regex");
 				if (params.raw) args.push("--raw");
 
 				const response = await runtime.client.json<{

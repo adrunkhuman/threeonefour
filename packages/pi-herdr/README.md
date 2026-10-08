@@ -62,3 +62,9 @@ Example tool capabilities:
 - send raw text/keys and close managed panes.
 
 Use `run` for normal line submission. Use `send` only for lower-level text or key injection.
+
+`watch` maps to Herdr 0.9.3's `herdr pane wait-output <PANE_ID>`: `match` is
+passed as `--match <TEXT>`, or as `--regex <PATTERN>` when `regex: true`.
+Optional `source`, `lines`, `timeout` (milliseconds), and `raw: true` map to
+`--source`, `--lines`, `--timeout`, and `--raw`. Pane aliases are resolved to pane
+IDs before invoking the CLI.
